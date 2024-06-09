@@ -1,0 +1,289 @@
+/* 
+Bảng tóm tắt thuộc tính (chỉ đơn giản là tổng hợp còn từng dòng nếu xuất hiện thuộc tính mới cũng viết lại)
+
+& Đầu tiên nói sơ qua về quy định cỡ chữ sẽ phân thành 2 loại  : 
+# Absolute unit ( Đơn vị cố định theo chiều đc đề ra bởi web dev tức là nếu là đổi giao diện hay thu nhỏ àn hình thì sẽ vẫn cố định : 
++ px
++ pt
++ cm
++ mm
++ inch
++ pc
+# Relative unit (thuộc tính có thể tùy chỉnh theo trang web thu nhỏ hay phóng to đều linh hoạt theo độ rộng chiều cao của trang web 
++ %
+
++ rem : nếu mà trong tag html đã có duy nhất 1 giá trị font-size thì sẽ lấy giá trị font-size làm mặc định 1 rem = 20f-s 2 rem = 40f-s (ở đầy cố định là có thuộc tính trước 20px ) 
++ em : nếu mà trong tag của body đã có duy nhất 1 giá trị font-size thì sẽ lấy giá trị font-size gần nhất làm mặc định 1 em = 20f-s 2 em = 40f-s (và không thông dụng bằng rem ) (ở đầy cố định là có thuộc tính trước 20px )
++ vw : chiều ngang cố định theo màn hình
++ vh : chiều dọc cố định theo màn hình
++ vmin : như tên
+
+-Các thuộc tính liên quan đến kiểu chữ : 
++ font-family : quy định phông chữ
++ font-weight : bold in đậm hoặc normal :in thường
++ text-align: center (căn giữa thực ra cái này không chỉ là riêng cho text đâu nhưng ai bảo nó có text );
++ font-size : cỡ chữ 
++ text text-decoration: underline lấy gạch chân khi phần tử đc hover 
+
+- Các thuộc tính liên quan đến thẻ hay là tags : 
++ width : độ rộng của khung 
+
+
+-Các thuộc tính liên quan đến hình ảnh ,màu sắc : 
++ color : màu sắc của riêng thuộc tính đấy 
++ background-color : màu nền  
++ background:linear-gradient: tạo màu cho background với dãy màu chuyển , có thể truyền 3 tham số (tham số 1 : quy định chiều đổ màu , tham số 2 : quy định chiều của màu 1 , tham số 3: quy định chiều của màu 3 ) đổ từ màu tham số 2 -> 3 và chiều đc xác định bởi tham số 1 
++ rgba : (red ,green , blue , alpha ) alpha là kênh độ trong suốt  của màu 
+
+- Mọi thứ trên 1 trang web đều xuất hiện theo dạng cột , hàng , hoặc nói rộng hơn là hộp(box) nên có các thuộc tính như sau : 
++ margin : khoảng cách giữa cái hộp và phần tử bên ngoài
++ padding : khoảng cách giữa đường viền và phần tử bên trong
++ Box-sizing : bo các thuộc tính div lại thành 1 box 
++ Border-radius: px :bo góc (bo viền của box ) thương được sử dụng cho submit hoặc khung đăng nhập đăng kí 
++ Box-shadow : quy định đổ bóng của box
++ Border : đường viền của box 
++ outline trong CSS được sử dụng để định dạng một đường viền (outline) xung quanh phần tử, không chiếm không gian bên trong hoặc bên ngoài phần tử1. Điều này khác với thuộc tính border, vì border ảnh hưởng đến bố cục bằng cách thêm vào không gian mà nó chiếm giữ.
+
+
+-Về position(vị trí xuất hiện của thẻ)  :
+
++ position: relative;
+relative là vị trí tương đối , sẽ lấy chính nó làm gốc toà độ., không phụ thuộc vào đối tượng nào bên ngoài
++position: absolute;
+sẽ phụ thuộc vào element có thuộc tính position gần nhất. Và có thể di chuyển xong quanh element đó.
+Nếu mà không có set width, height và đặt top , bot , left , right = 0 thì box sẽ chạm 4 hướng ;
+
+- Về flexbox : 
++ display: flex | inline-flex : quyết định sử dụng layout flexbox hay không
++ justify-content: space-around  : tạo ra không gian phân bố đều nhau ( như căn giữa ấy) 
+
+-Về pseudo element( và có cả css selector) cho phép quy định kiểu trạng thái của  thẻ khi bị người dùng tương tác  : 
++  :hover được kích hoạt khi con chuột đi vào phần tử
++ :active được kích hoạt khi phần tử đang trong trạng thái được nhấn hoặc kích hoạt bởi phương thức nào
++ :focus được kích hoạt khi phần tử đang trong trạng thái tập trung tức là khi người dùng truy cập bằng bàn phím hay trình duyệt 
++ ::placeholder  : cho phép tùy chỉnh kiểu dạng của placeholder (chữ in đằng sau input ấy ) 
++ ~ là các phần tử anh em (sibling) theo sau 1 phần tử cụ thể  và chia sẻ cùng cha
++input:focus~label: Selector này áp dụng kiểu dáng cho phần tử label khi phần tử input tương ứng đang được focus (tức là người dùng đang click hoặc tab vào trường nhập liệu).
++ input:not(:placeholder-shown)~label: Selector này áp dụng kiểu dáng cho phần tử label khi phần tử input không hiển thị placeholder (nghĩa là trường nhập liệu đã có giá trị do người dùng nhập vào).
+Nói chung là 2 cặp này thường đi với nhau tạo nên hiệu ứng đc gọi là "floating labels" label thay đổi lên trên và cố định ở trên nếu có dữ liệu của người dùng nhập vào 
+
+-Về chuyển động của phần tử : 
++transition: tạo hiệu ứng chuyển đổi mượt mà giữa 2 thanh trạng thái khác nhau của 1 phần tử và cũng có thể kiểm soát tốc độ
+
+- Về hiệu ứng : 
++cursor : tương ứng khi mà để chuột lên thì con trỏ sẽ biến thành dạng gì 
+
+
+
+*/
+
+
+
+
+* {
+    /* + margin : khoảng cách giữa cái hộp và phần tử bên ngoài
++ padding : khoảng cách giữa đường viền và phần tử bên trong
++ Box-sizing : bo các thuộc tính div lại thành 1 box
++font-family : quy định phông chữ */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+body {
+    /* + background-color : màu nền  
++ background:linear-gradient: tạo màu cho background với dãy màu chuyển , có thể truyền 3 tham số (tham số 1 : quy định chiều đổ màu , tham số 2 : quy định chiều của màu 1 , tham số 3: quy định chiều của màu 3 ) đổ từ màu tham số 2 -> 3 và chiều đc xác định bởi tham số 1  */
+
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+}
+
+.container {
+    /* + width : độ rộng của khung  
+    + Border-radius: px :bo góc (bo viền của box ) thương được sử dụng cho submit hoặc khung đăng nhập đăng kí 
+    + Box-shadow : quy định đổ bóng của box
+    */
+
+    background: #fff;
+    width: 450px;
+    padding: 1.5rem;
+    margin: 50px auto;
+    border-radius: 10px;
+    /* rgba : (red ,green , blue , alpha ) alpha là kênh độ trong suốt  của màu */
+    box-shadow: 0 20px 35px rgba(0, 0, 1, 0.9);
+}
+
+form {
+    margin: 0 2rem;
+}
+
+.form-title {
+
+    /* + font-weight : bold in đậm hoặc normal :in thường
++ text-align: center (căn giữa thực ra cái này không chỉ là riêng cho text đâu nhưng ai bảo nó có text ); */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.3rem;
+    margin-bottom: 0.4rem;
+}
+
+input {
+    /* color : inherit kế thừa color gần nó nhất 
+    background-color: transparent được sử dụng để chỉ định một màu trong suốt. Nó thường được áp dụng cho các thuộc tính như background-color hoặc color để làm cho phần tử không hiển thị màu gì cả, cho phép các phần tử phía sau có thể nhìn thấy qua
+    border :none ko có đường viên
+    + font-size : cỡ chữ 
+    */
+    color: inherit;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #757575;
+    padding-left: 1.5rem;
+    font-size: 15px;
+}
+
+.input-group {
+    /* +position: relative;
+    relative là vị trí tương đối, sẽ lấy chính nó làm gốc toà độ., không phụ thuộc vào đối tượng nào bên ngoài padding: 1% 0; */
+    position: relative;
+    padding-top: 7px;
+}
+
+.input-group i {
+    /* +position: absolute;
+    sẽ phụ thuộc vào element có thuộc tính position gần nhất. Và có thể di chuyển xong quanh element đó. position: absolute; */
+    color: black;
+    position: absolute;
+}
+
+/* :focus người dùng bấm chuột và chuột còn ở trong  */
+input:focus {
+    /* outline trong CSS được sử dụng để định dạng một đường viền (outline) xung quanh phần tử, không chiếm không gian bên trong hoặc bên ngoài phần tử1. Điều này khác với thuộc tính border, vì border ảnh hưởng đến bố cục bằng cách thêm vào không gian mà nó chiếm giữ.*/
+    background-color: transparent;
+    outline: transparent;
+    border-bottom: 2px solid hsl(327, 90%, 28%);
+}
+
+/* + ::placeholder : cho phép tùy chỉnh kiểu dạng của placeholder (chữ in đằng sau input ấy)  */
+input::placeholder {
+    color: transparent;
+}
+
+label {
+    /* transition: tạo hiệu ứng chuyển đổi mượt mà giữa 2 thanh trạng thái khác nhau của 1 phần tử và cũng có thể kiểm soát tốc độ 
+    còn ease ở đây là điều chỉnh tốc độ đầu chậm giữa nhanh cuối chậm 
+
+    
+    +cursor : tương ứng khi mà để chuột lên thì con trỏ sẽ biến thành dạng gì vd: cursor:pointer thì con chuột sẽ thành dạng bàn tay 
+    */
+    color: #757575;
+    position: relative;
+    left: 1.2em;
+    top: -1.3em;
+    cursor: auto;
+    transition: 0.3s ease all;
+    -webkit-transition: 0.3s ease all;
+    -moz-transition: 0.3s ease all;
+    -ms-transition: 0.3s ease all;
+    -o-transition: 0.3s ease all;
+}
+
+/* ~ là các phần tử anh em (sibling) theo sau 1 phần tử cụ thể  và chia sẻ cùng cha
+input:focus~label: Selector này áp dụng kiểu dáng cho phần tử label khi phần tử input tương ứng đang được focus (tức là người dùng đang click hoặc tab vào trường nhập liệu).
+input:not(:placeholder-shown)~label: Selector này áp dụng kiểu dáng cho phần tử label khi phần tử input không hiển thị placeholder (nghĩa là trường nhập liệu đã có giá trị do người dùng nhập vào).
+Nói chung là 2 cặp này thường đi với nhau tạo nên hiệu ứng đc gọi là "floating labels" label thay đổi lên trên và cố định ở trên nếu có dữ liệu của người dùng nhập vào 
+*/
+input:focus~label, input:not(:placeholder-shown)~label {
+    top: -3em;
+    color: hsl(327, 90%, 28%);
+    font-size: 15px;
+}
+
+.recover {
+    text-align: right;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.recover a {
+    text-decoration: none;
+    color: rgb(125, 125, 235);
+}
+
+/* :hover được kích hoạt khi con chuột đi vào phần tử  */
+.recover a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+.btn {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 100%;
+    background: rgb(125, 125, 235);
+    color: white;
+    cursor: pointer;
+    transition: 0.9s;
+}
+
+.btn:hover {
+    background: #07001f;
+}
+
+.or {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.icons {
+    text-align: center;
+}
+
+.icons i {
+    color: rgb(125, 125, 235);
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid #dfe9f5;
+    margin: 0 15px;
+    transition: 1s;
+}
+
+.icons i:hover {
+    background: #07001f;
+    font-size: 1.6rem;
+    border: 2px solid rgb(125, 125, 235);
+}
+
+/* 
++ display: flex | inline-flex : quyết định sử dụng layout flexbox hay không
++ justify-content: space-around  : tạo ra không gian phân bố đều nhau ( như căn giữa ấy) */
+.links {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 4rem;
+    margin-top: 0.9rem;
+    font-weight: bold;
+}
+
+button {
+    color: rgb(125, 125, 235);
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button:hover {
+    /* text-decoration: underline lấy gạch chân khi phần tử đc hover ; */
+    text-decoration: underline;
+    color: blue;
+}
